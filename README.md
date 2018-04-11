@@ -2,6 +2,11 @@
 ラズベリーパイからjsonの温度データを受け取り表示する
 ===
 
+## リリース
+- ver0.1
+restでDB接続と仮トップ画面表示
+
+## rest
 - 登録データ全件教示
 ```
 curl http://server/api/v1/temp
