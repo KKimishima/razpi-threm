@@ -2,6 +2,7 @@ package com.github.kkimishima.razpithrem.web;
 
 import com.github.kkimishima.razpithrem.domain.TempData;
 import com.github.kkimishima.razpithrem.repository.TempRepository;
+import com.github.kkimishima.razpithrem.service.TempDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
@@ -13,19 +14,22 @@ import java.util.List;
 @RequestMapping("/api/v1/")
 public class TempController {
   @Autowired
-  TempRepository tempRepository;
+  TempDataService tempDataService;
 
   @RequestMapping(value = "/temp", method = RequestMethod.POST)
   public TempData SaveTemp(@Validated @RequestBody TempData tempData) {
-    return tempRepository.save(tempData);
+    return tempDataService.SaveDate(tempData);
   }
 
-  @RequestMapping(value = "/temp",method = RequestMethod.GET)
-  public List<TempData> GetAllTemp(){
-    return tempRepository.findAll();
+  @RequestMapping(value = "/temp", method = RequestMethod.GET)
+  public List<TempData> GetAllTemp() {
+    return tempDataService.FindAll();
   }
-  @RequestMapping(value = "/temp/last",method = RequestMethod.GET)
-  public List<TempData> GetLastTemp(){
-    return tempRepository.findLastDate();
+
+  @RequestMapping(value = "/temp/last", method = RequestMethod.GET)
+  public List<TempData> GetLastTemp() {
+    return tempDataService.LastData();
   }
+//  @RequestMapping(value = "/temp/reset",method = RequestMethod.GET)
+//  public void RestTemp(){tempRepository.restDate();}
 }
