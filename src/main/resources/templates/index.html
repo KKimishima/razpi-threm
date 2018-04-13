@@ -1,16 +1,107 @@
-<!doctype html>
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
 <html lang="ja">
 <head>
   <meta charset="utf-8">
 
-  <title>TestDemo</title>
+  <title>ラズパイ温度表示システム!!!</title>
   <meta name="description" content="The HTML5 Herald">
-  <meta name="author" content="SitePoint">
+  <script src="/js/main.js" th:src="@{/js/main.js}"></script>
 
 </head>
 
 <body>
-<h1>表示テスト</h1>
+<header>
+
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="/">ラズパイ温度表示</a>
+
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">システムの説明 <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/">作者紹介<span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<main role="main">
+
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div id="thermo-info">
+    <div class="jumbotron">
+      <div class="container">
+        <h1 class="display-3" id="last-temp">読み込み中</h1>
+        <p>測定気温が表示されています。<br>
+          測定気温は2分毎に更新されます。現状の測定状態を表示しているわけでは無いのではありません。</p>
+        <p><a class="btn btn-primary btn-lg" href="#" role="button">システム紹介 &raquo;</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div id="thermo-measurement">
+    <div class="container">
+      <div class="card">
+        <div class="card-header card text-white bg-primary">
+          測定温度
+        </div>
+          <div class="card-body" >
+          <h5 class="card-title">測定履歴の表示</h5>
+          <p class="card-text">二分ごとに測定した結果の一覧が表示されます。</p>
+          <div id="error-msg"></div>
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <th scope="col">NO</th>
+              <th scope="col">測定時間</th>
+              <th scope="col">測定温度</th>
+            </tr>
+            </thead>
+            <tbody id="all-temp">
+            <!--<div id="all-temp">-->
+              <!--<tr>-->
+                <!--<td>1</td>-->
+                <!--<td>Mark</td>-->
+                <!--<td>Otto</td>-->
+              <!--</tr>-->
+            <!--</div>-->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="Description">
+    <div class="container">
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-md-4">
+          <h2>システム紹介</h2>
+          <p>どのようなシステムになっており、どのような技術を使用しているか興味があるかたは、リンクからチェックしてみてください</p>
+          <p><a class="btn btn-secondary" href="#" role="button">システム紹介 &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+          <h2>作者紹介</h2>
+          <p>作者の活動に興味があるからは下記のリンクからチェックしてみてください</p>
+          <p><a class="btn btn-secondary" href="#" role="button">作者紹介 &raquo;</a></p>
+        </div>
+      </div>
+    </div>
+    <hr>
+
+  </div> <!-- /container -->
+
+</main>
+<footer class="container">
+  <p>KKimishima 2017-2018</p>
+</footer>
 </body>
 </html>

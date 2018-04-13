@@ -13,17 +13,17 @@ import java.util.List;
 @Transactional
 public class TempDataService {
   @Autowired
-  TempDataService tempDataService;
+  TempRepository tempRepository;
 
-  public List<TempData> findAll(){
-    return tempDataService.findAll();
+  public List<TempData> LastData() {
+    return tempRepository.findLastDate();
   }
 
-  public TempData seve(TempData tempData){
-    return tempDataService.seve(tempData);
+  public List<TempData> FindAll() {
+    return tempRepository.findAll();
   }
 
-  public List<TempData> LastDate(){
-    return tempDataService.LastDate();
+  public TempData SaveDate(TempData tempData) {
+    return tempRepository.save(tempData);
   }
 }
