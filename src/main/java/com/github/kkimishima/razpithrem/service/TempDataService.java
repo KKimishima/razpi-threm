@@ -26,4 +26,6 @@ public class TempDataService {
   public TempData SaveDate(TempData tempData) {
     return tempRepository.save(tempData);
   }
+
+  public void DeleteData(Long id){tempRepository.deleteById(id);}
 }

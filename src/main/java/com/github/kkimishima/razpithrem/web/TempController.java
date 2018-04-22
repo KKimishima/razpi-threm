@@ -30,6 +30,11 @@ public class TempController {
   public List<TempData> GetLastTemp() {
     return tempDataService.LastData();
   }
+  @RequestMapping(value = "/temp/delete/{id}",method = RequestMethod.GET)
+  public void DeleteOneTemp(@PathVariable ("id") Long id){
+    System.out.println("結果 " + id);
+    tempDataService.DeleteData(id);
+  }
 //  @RequestMapping(value = "/temp/reset",method = RequestMethod.GET)
 //  public void RestTemp(){tempRepository.restDate();}
 }
